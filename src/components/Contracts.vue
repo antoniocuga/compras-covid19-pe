@@ -4,7 +4,7 @@
 
 
       <div class="row">
-        <div v-bind:key="contract.index" class="col-6 mb-3" v-for="contract in dataset">
+        <div v-bind:key="contract.index" class="col-12 mb-3" v-for="contract in dataset">
           <div class="card h-100">
             <div class="card-header">
               <strong>Proveedor:</strong> {{ contract.PROVEEDOR }}

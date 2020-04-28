@@ -26,11 +26,9 @@
 </template>
 
 <script>
-  import countBy from 'lodash/sortBy'
   import filter from 'lodash/filter'
-  import keys from 'lodash/keys'
   import map from 'lodash/map'
-  import sortBy from 'lodash/orderBy'
+  import sortBy from 'lodash/sortBy'
   import uniq from 'lodash/uniq'
   import { mapMutations, mapState } from 'vuex'
   import Contracts from './Contracts'

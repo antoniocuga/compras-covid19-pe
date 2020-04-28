@@ -2,6 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
+        <summary-contracts :dataset="dataset"></summary-contracts>
+      </div>
+    </div>    
+    <div class="row">
+      <div class="col-12">
         <search :dataset="dataset"></search>
       </div>
     </div>    
@@ -16,9 +21,9 @@
   import { library } from '@fortawesome/fontawesome-svg-core'
   import { faTimes, faPauseCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-  import get from 'lodash/get'
-
+  
   import Search from './components/Search'
+  import SummaryContracts from './components/SummaryContracts'
 
   library.add(faTimes)
   library.add(faPauseCircle)
@@ -32,7 +37,8 @@
   export default {
     name: "App",
     components: {
-      Search
+      Search,
+      SummaryContracts
     },
     computed: {
       dataset () {
