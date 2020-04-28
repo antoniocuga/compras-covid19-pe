@@ -6,7 +6,7 @@
 
       <div class="row">
         <div class="col-6" v-bind:key="rubro.rubro" v-for="rubro in rubros">          
-          <div><label>{{ rubro.rubro }}: </label> S/.{{ rubro.total }}</div>
+          <div><strong>{{ rubro.rubro }}: </strong> {{ rubro.total | currency('S/ ') }}</div>
         </div>
       </div>
       
@@ -32,7 +32,7 @@
         rubros = map(groupBy(rubros, 'RUBROS'), (item, value) => {
           return {
             "rubro": value,
-            "total": this.formatPrice((sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2))
+            "total": sum(map(item, 'MONTOADJUDICADOSOLES'))
           }
         })
         
@@ -40,10 +40,6 @@
       }
     },
     methods: {
-      formatPrice(value) {
-        let val = (value/1).toFixed(2).replace('.', ',')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-      }
     }
   }
 </script>
