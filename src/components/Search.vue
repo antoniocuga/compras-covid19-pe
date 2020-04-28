@@ -6,7 +6,7 @@
         <div class="col-4">
           <b-form-group label="Departamento">
             <b-dropdown :text="selectedDepartment">
-              <b-dropdown-item v-for="department in departments" b-bind:key="department" @click="filterDepartment(department)">
+              <b-dropdown-item v-for="department in departments" v-bind:key="department" @click="filterDepartment(department)">
                 {{ department }}
               </b-dropdown-item>
             </b-dropdown>
@@ -44,11 +44,9 @@
 </template>
 
 <script>
-  import countBy from 'lodash/sortBy'
   import filter from 'lodash/filter'
-  import keys from 'lodash/keys'
   import map from 'lodash/map'
-  import sortBy from 'lodash/orderBy'
+  import sortBy from 'lodash/sortBy'
   import uniq from 'lodash/uniq'
   import { mapMutations, mapState } from 'vuex'
   import Contracts from './Contracts'
@@ -103,11 +101,11 @@
       },
       filterEntidad(entidad) {
         this.setSelectedEntidad(entidad)
-        this.contracts = filter(this.dataset, item => item.ENTIDAD == this.selectedEntidad )
+        this.contracts = filter(this.contracts, item => item.ENTIDAD == this.selectedEntidad )
       },
       filterRubros(rubro) {
         this.setSelectedRubro(rubro)
-        this.contracts = filter(this.dataset, item => item.RUBROS == this.selectedRubro )
+        this.contracts = filter(this.contracts, item => item.RUBROS == this.selectedRubro )
       }
     }
   }
