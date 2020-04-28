@@ -10,6 +10,7 @@
 
 <script>
   import BootstrapVue from 'bootstrap-vue'
+  import "vue-select/dist/vue-select.css"
   import Vue from 'vue'
   import Vuex from 'vuex'
   import { library } from '@fortawesome/fontawesome-svg-core'
