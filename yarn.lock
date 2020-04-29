@@ -8920,6 +8920,7 @@ vue2-filters@^0.11.0:
   resolved "https://registry.yarnpkg.com/vue2-filters/-/vue2-filters-0.11.0.tgz#32fff5a95e55159a93d6fecbaf69b58f0e056e99"
   integrity sha512-/sL1slXSxbFkrk9acgRSbykwcs7EmdTVxDcmdb5WHmpQG9cFb//LTaJy4EiH/e58nnD6ZHw2B5k+Gz0mTaQszA==
 
+<<<<<<< HEAD
 vue2-leaflet@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/vue2-leaflet/-/vue2-leaflet-2.1.1.tgz#33ec8920bd1e273b312209a84ce355021226ee79"
@@ -8930,6 +8931,8 @@ vue2-leaflet@^2.5.2:
   resolved "https://registry.yarnpkg.com/vue2-leaflet/-/vue2-leaflet-2.5.2.tgz#b89c056fe741c7ce7cb9df5aca90809092e5eb8d"
   integrity sha512-9eN0TxqCkyXbaI7waO3u+n0OAezkxjb811tstG6gRLAZy/ocXlNLC3JqTWE0FwBUlqBbMpyzsIk6LrEhs8oVBQ==
 
+=======
+>>>>>>> d61fe6cb04dd46f3bc977dc27b989179d847ebf0
 vue@^2.5.x, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"

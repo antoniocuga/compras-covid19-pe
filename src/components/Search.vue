@@ -2,33 +2,15 @@
   <div class="row">
     <div class="col-12">
 
-      <div class="row mb-3">
+      <div class="row my-3">
         <div class="col-4">
-          <b-form-group label="Departamento">
-            <b-dropdown :text="selectedDepartment">
-              <b-dropdown-item v-for="department in departments" v-bind:key="department" @click="filterDepartment(department)">
-                {{ department }}
-              </b-dropdown-item>
-            </b-dropdown>
-          </b-form-group>
+          <v-select class="vue-select2" :options="departments" placeholder="Todos los departamentos" @input="filterDepartment"></v-select>
         </div>
         <div class="col-4">
-          <b-form-group label="Entidad">
-            <b-dropdown :text="selectedEntidad">
-              <b-dropdown-item v-bind:key="entidad" v-for="entidad in entidades"  @click="filterEntidad(entidad)">
-                {{ entidad }}
-              </b-dropdown-item>
-            </b-dropdown>
-          </b-form-group>
+          <v-select class="vue-select2" :options="entidades" placeholder="Todas las entidades" @input="filterEntidad"></v-select>
         </div>
         <div class="col-4">
-          <b-form-group label="Rubros">
-            <b-dropdown :text="selectedRubro">
-              <b-dropdown-item v-bind:key="rubro" v-for="rubro in rubros"  @click="filterRubros(rubro)">
-                {{ rubro }}
-              </b-dropdown-item>
-            </b-dropdown>
-          </b-form-group>
+          <v-select class="vue-select2" :options="rubros" placeholder="Todas los rubros" @input="filterRubros"></v-select>
         </div>
       </div>
 
@@ -55,7 +37,7 @@
     name: "Search",
     data() {
       return {
-        contracts: Array
+        contracts: Array,
       }
     },
     props: {
@@ -70,19 +52,13 @@
     computed: {
       ...mapState(['selectedDepartment', 'selectedEntidad', 'selectedRubro']),
       departments() {
-        const departments = this.fieldDataset(this.dataset, 'ENTIDAD_DEPARTAMENTO')
-        return departments
+        return this.fieldDataset(this.dataset, 'ENTIDAD_DEPARTAMENTO')
       },
       entidades() {
         return this.fieldDataset(this.contracts, 'ENTIDAD')
       },
       rubros() {
         return this.fieldDataset(this.contracts, 'RUBROS')
-      }
-    },
-    watch: {
-      selectedDepartment() {
-        this.filterDataset()
       }
     },
     methods: {
@@ -93,19 +69,35 @@
       },
       filterDataset () {
         this.contracts = sortBy(this.dataset, ['MONTOADJUDICADOSOLES'], ['desc'])
-        this.contracts = filter(this.contracts, item => item.ENTIDAD_DEPARTAMENTO == this.selectedDepartment )
+        this.contracts = filter(this.contracts, item => {
         
+          let condition = true;
+          if (this.selectedDepartment) {
+            condition = condition && item.ENTIDAD_DEPARTAMENTO == this.selectedDepartment 
+          }
+
+          if (this.selectedRubro) {
+            condition = condition && item.RUBROS == this.selectedRubro
+          }
+
+          if (this.selectedEntidad) {
+            condition = condition && item.ENTIDAD == this.selectedEntidad 
+          }
+
+          return condition;
+        })
       },
       filterDepartment(department) {
         this.setSelectedDepartment(department)
+        this.filterDataset()
       },
       filterEntidad(entidad) {
         this.setSelectedEntidad(entidad)
-        this.contracts = filter(this.contracts, item => item.ENTIDAD == this.selectedEntidad )
+        this.filterDataset()
       },
       filterRubros(rubro) {
         this.setSelectedRubro(rubro)
-        this.contracts = filter(this.contracts, item => item.RUBROS == this.selectedRubro )
+        this.filterDataset()
       }
     }
   }
