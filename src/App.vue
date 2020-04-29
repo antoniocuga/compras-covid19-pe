@@ -18,13 +18,13 @@
   import Vue from 'vue'
   import Vuex from 'vuex'
   import { library } from '@fortawesome/fontawesome-svg-core'
-  import { faTimes, faPauseCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+  import { faDrumstickBite, faPauseCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   
   import Search from './components/Search'
   import SummaryContracts from './components/SummaryContracts'
 
-  library.add(faTimes)
+  library.add(faDrumstickBite)
   library.add(faPauseCircle)
   library.add(faPlayCircle)
 
@@ -37,7 +37,7 @@
     name: "App",
     components: {
       Search,
-      SummaryContracts
+      SummaryContracts,
     },
     computed: {
       dataset () {
