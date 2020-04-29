@@ -104,7 +104,7 @@
           return {
             "region": `${value}` ,
             "count": item.length,
-            "total": this.formatPrice((sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2))
+            "total": sum(map(item, 'MONTOADJUDICADOSOLES')).toFixed(2)
           }
         })
         
