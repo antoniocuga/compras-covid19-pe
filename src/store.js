@@ -5,9 +5,9 @@ Vue.use(Vuex)
 
 function initialState () {
   return {
-    selectedDepartment: 'Todos los departamentos',
-    selectedEntidad: 'Todas las entidades',
-    selectedRubro: 'Todas los rubros'
+    selectedDepartment: null,
+    selectedEntidad: null,
+    selectedRubro: null
   }
 }
 
