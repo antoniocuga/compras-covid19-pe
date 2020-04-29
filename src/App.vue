@@ -19,15 +19,13 @@
   import Vue from 'vue'
   import Vuex from 'vuex'
   import { library } from '@fortawesome/fontawesome-svg-core'
-  import { faDrumstickBite, faPauseCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+  import { faDrumstickBite } from '@fortawesome/free-solid-svg-icons'
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   
   import Search from './components/Search'
   import SummaryContracts from './components/SummaryContracts'
 
   library.add(faDrumstickBite)
-  library.add(faPauseCircle)
-  library.add(faPlayCircle)
 
   Vue.use(BootstrapVue)
   Vue.use(Vuex)

@@ -2,15 +2,15 @@
   <div class="row mb-5">
     <div class="col-12">
       
-      <h1>Compras durante la emergencia</h1>
+      <h1 class="mb-5">Compras durante la emergencia</h1>
 
       <div class="row">
-        <div class="col-6" v-bind:key="rubro.rubro" v-for="rubro in rubros">          
+        <div class="col-6 mb-3" v-bind:key="rubro.rubro" v-for="rubro in rubros">          
           <div><strong>{{ rubro.rubro }}: </strong> {{ rubro.total | currency('S/ ') }}</div>
         </div>
       </div>
       
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12">
           <h2>Gobiernos Locales</h2>
           <div>{{ gobiernosLocales }}</div>
@@ -30,7 +30,7 @@
           <div>{{ gobiernosNacional }}</div>
         </div>
       </div>
-      
+       -->
       
     </div>
   </div>
@@ -68,7 +68,7 @@
         objectos = map(groupBy(objectos, 'OBJETOCONTRACTUAL'), (item, value) => {
           return {
             "objectos": value,
-            "total": this.formatPrice((sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2))
+            "total": (sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2)
           }
         })
         
@@ -80,7 +80,7 @@
           return {
             "distrito": `${value}` ,
             "count": item.length,
-            "total": this.formatPrice((sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2))
+            "total": (sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2)
           }
         })
         
@@ -92,7 +92,7 @@
           return {
             "region": `${value}` ,
             "count": item.length,
-            "total": this.formatPrice((sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2))
+            "total": (sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2)
           }
         })
         
