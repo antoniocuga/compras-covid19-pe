@@ -16,6 +16,14 @@
 
       <div class="row">
         <div class="col-12">
+          <div class="alert alert-success" role="alert">
+            Se encontraron <strong>{{ contracts.length }} de contrataciones</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
           <contracts :dataset="contracts"></contracts>
         </div>
       </div>

@@ -18,6 +18,8 @@
   import "vue-select/dist/vue-select.css"
   import Vue from 'vue'
   import Vuex from 'vuex'
+  import HighchartsVue from 'highcharts-vue'
+
   import { library } from '@fortawesome/fontawesome-svg-core'
   import { faDrumstickBite } from '@fortawesome/free-solid-svg-icons'
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -29,6 +31,7 @@
 
   Vue.use(BootstrapVue)
   Vue.use(Vuex)
+  Vue.use(HighchartsVue)
 
   Vue.component('font-awesome-icon', FontAwesomeIcon)
 
