@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-12">
           <div class="alert alert-success" role="alert">
-            Se encontraron <strong>{{ contracts.length }} de contrataciones</strong>
+            Se encontraron <strong>{{ contracts.length }} contrataciones</strong>
           </div>
         </div>
       </div>
