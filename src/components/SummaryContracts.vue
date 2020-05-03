@@ -2,7 +2,14 @@
   <div class="row mb-5">
     <div class="col-12">
       
-      <h1 class="mb-5">Compras públicas durante la emergencia en Perú</h1>
+      <h1 class="pt-5 pb-5">Compras públicas durante la emergencia en Perú</h1>
+
+      <div class="row">
+        <div class="col-12 mb-3">
+          <p> Contrataciones ante la Emergencia Sanitaria por la existencia del Coronavirus - [Organismo Supervisor de las Contrataciones del Estado (OSCE)] <a href="https://www.datosabiertos.gob.pe/dataset/contrataciones-ante-la-emergencia-sanitaria-por-la-existencia-del-coronavirus-organismo">Ir a la fuente</a>
+          </p>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-6 mb-3" v-bind:key="rubro.rubro" v-for="rubro in rubros">          
@@ -15,6 +22,7 @@
           <chart-compras :dataset="numberContracts"></chart-compras>
         </div>
       </div>
+
       
     </div>
   </div>
