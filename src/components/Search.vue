@@ -37,6 +37,7 @@
   import filter from 'lodash/filter'
   import map from 'lodash/map'
   import sortBy from 'lodash/sortBy'
+  import orderBy from 'lodash/orderBy'
   import uniq from 'lodash/uniq'
   import { mapMutations, mapState } from 'vuex'
   import Contracts from './Contracts'
@@ -55,7 +56,7 @@
       Contracts
     },
     beforeMount() {
-      this.contracts = sortBy(this.dataset, ['MONTOADJUDICADOSOLES'], ['desc'])
+      this.contracts = orderBy(this.dataset, ['FECHACONVOCATORIA'], ['desc'])
     },
     computed: {
       ...mapState(['selectedDepartment', 'selectedEntidad', 'selectedRubro']),

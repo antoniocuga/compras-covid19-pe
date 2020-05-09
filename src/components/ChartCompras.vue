@@ -6,9 +6,10 @@
 
 <script>
   import { Chart } from 'highcharts-vue'
-  import orderBy from 'lodash/orderBy'
+  import sortBy from 'lodash/sortBy'
   import map from 'lodash/map'
   import uniq from 'lodash/uniq'
+  import moment from 'moment'
 
   export default {
     name: "ChartCompras",
@@ -20,7 +21,7 @@
     },
     computed: {
       comprasDiarias() {
-        let data = orderBy(this.dataset, 'name')
+        let data = sortBy(this.dataset, 'name')
         return data
       },
       chartOptions() {
@@ -31,8 +32,17 @@
           subtitle: {
               text: 'Contratos convocados por día'
           },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b><br/>' + 'Total: <b>{point.total}</b><br/>',
+            shared: true
+          },
           xAxis: {        
-            categories: uniq(map(this.comprasDiarias, 'name'))
+            categories: uniq(map(this.comprasDiarias, 'name')),
+            labels: {
+              formatter: function() {
+                return moment(this.value).format("DD-MM-YYYY")
+              }
+            }
           },
           yAxis: {
             title: {
@@ -45,6 +55,7 @@
           },
           series: [{
             type: "column",
+            name: 'Compras',
             data: this.comprasDiarias,
             color: "#d4edda"
           }]

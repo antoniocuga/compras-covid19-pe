@@ -11,11 +11,7 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-6 mb-3" v-bind:key="rubro.rubro" v-for="rubro in rubros">          
-          <div><strong>{{ rubro.rubro }}: </strong> {{ rubro.total | currency('S/ ') }}</div>
-        </div>
-      </div>
+      <distritos-summary :dataset="rubrosByDistrito"></distritos-summary>
 
       <div class="row">
         <div class="col-12 mb-3">
@@ -38,6 +34,7 @@
   import orderBy from 'lodash/orderBy'
   import moment from 'moment'
   import ChartCompras from './ChartCompras'
+  import DistritosSummary from './DistritosSummary'
 
   export default {
     name: "SummaryContracts",
@@ -45,7 +42,8 @@
       dataset: Array
     },
     components: {
-      ChartCompras
+      ChartCompras,
+      DistritosSummary
     },
     computed: {
       rubros() {
@@ -59,6 +57,9 @@
         
         return rubros
       },
+      rubrosByDistrito() {
+        return this.dataset
+      },
       objectos() {
         let objectos = sortBy(this.dataset, 'OBJETOCONTRACTUAL')
         objectos = map(groupBy(objectos, 'OBJETOCONTRACTUAL'), (item, value) => {
@@ -71,19 +72,12 @@
         return objectos
       },
       gobiernosLocales() {
-        let gobs = filter(this.dataset, item => item.TIPOENTIDADOEE == "Gobierno Local")
-        gobs = map(groupBy(gobs, 'ENTIDAD'), (item, value) => {
-          return {
-            "distrito": `${value}` ,
-            "count": item.length,
-            "total": (sum(map(item, 'MONTOADJUDICADOSOLES'))).toFixed(2)
-          }
-        })
+        let gobs = filter(this.dataset, item => item.TIPOENTIDADOEE == "GOBIERNO LOCAL")
         
-        return orderBy(gobs, 'count', 'desc')
+        return gobs
       },
       gobiernosRegionales() {
-        let gobs = filter(this.dataset, item => item.TIPOENTIDADOEE == "Gobierno Regional")
+        let gobs = filter(this.dataset, item => item.TIPOENTIDADOEE == "GOBIERNO REGIONAL")
         gobs = map(groupBy(gobs, 'ENTIDAD'), (item, value) => {
           return {
             "region": `${value}` ,
@@ -95,7 +89,7 @@
         return orderBy(gobs, 'count', 'desc')
       },
       gobiernosNacional() {
-        let gobs = filter(this.dataset, item => item.TIPOENTIDADOEE == "Gobierno Nacional")
+        let gobs = filter(this.dataset, item => item.TIPOENTIDADOEE == "GOBIERNO NACIONAL")
         gobs = map(groupBy(gobs, 'ENTIDAD'), (item, value) => {
           return {
             "region": `${value}` ,
@@ -109,8 +103,9 @@
       numberContracts() {
         const fechas = map(groupBy(this.dataset, 'FECHACONVOCATORIA'), (item, fecha) => {
           return {
-            "name": fecha,
-            "y": item.length
+            "name": moment(fecha),
+            "y": item.length,
+            "total": sum(map(item, 'MONTOADJUDICADOSOLES')).toFixed(2)
           }
           
         })
