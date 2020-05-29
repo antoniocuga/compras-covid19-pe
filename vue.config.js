@@ -1,5 +1,5 @@
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/codiv-19'
+    ? '/compras-covid19-pe'
     : '/'
 }
