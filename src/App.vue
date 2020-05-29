@@ -19,6 +19,7 @@
   import Vue from 'vue'
   import Vuex from 'vuex'
   import HighchartsVue from 'highcharts-vue'
+  import concat from 'lodash/concat'
 
   import { library } from '@fortawesome/fontawesome-svg-core'
   import { faDrumstickBite } from '@fortawesome/free-solid-svg-icons'
@@ -43,7 +44,10 @@
     },
     computed: {
       dataset () {
-        return require('./data/dataset.json')
+        const data2 = require('./data/dataset-2.json')
+        const data = require('./data/dataset.json')
+        const final = concat(data2, data)
+        return final
       },
     }
   }

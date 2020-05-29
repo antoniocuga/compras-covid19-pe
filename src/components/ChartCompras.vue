@@ -56,7 +56,8 @@
           series: [{
             type: "column",
             name: 'Compras',
-            data: this.comprasDiarias
+            data: this.comprasDiarias,
+            color: '#c3e6cb'
           }]
         }
 
