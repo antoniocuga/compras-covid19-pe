@@ -1,16 +1,17 @@
 <template>
-  <div class="row mb-5">
-    <div class="col-12">
+  <div class="row mb-5 justify-content-center">
+    <div class="col-6">
       
-      <h1 class="pt-5 pb-5">Compras públicas durante la emergencia en Perú</h1>
+      <h1 class="pt-5 text-center pb-5">Compras públicas durante la emergencia en Perú</h1>
 
       <div class="row">
-        <div class="col-12 mb-3">
+        <div class="text-center col-12 mb-3">
           <p> Contrataciones ante la Emergencia Sanitaria por la existencia del Coronavirus - [Organismo Supervisor de las Contrataciones del Estado (OSCE)] <a href="https://www.datosabiertos.gob.pe/dataset/contrataciones-ante-la-emergencia-sanitaria-por-la-existencia-del-coronavirus-organismo">Ir a la fuente</a>
           </p>
         </div>
       </div>
-
+    </div>
+    <div class="col-12">
       <distritos-summary :dataset="rubrosByDistrito"></distritos-summary>
 
       <div class="row">
