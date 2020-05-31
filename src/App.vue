@@ -43,7 +43,7 @@
       SummaryContracts,
     },
     computed: {
-      dataset () {\
+      dataset () {
         const data = require('./data/dataset.json')
         return data
       },
