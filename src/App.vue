@@ -19,7 +19,6 @@
   import Vue from 'vue'
   import Vuex from 'vuex'
   import HighchartsVue from 'highcharts-vue'
-  import concat from 'lodash/concat'
 
   import { library } from '@fortawesome/fontawesome-svg-core'
   import { faDrumstickBite } from '@fortawesome/free-solid-svg-icons'
