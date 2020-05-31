@@ -43,11 +43,9 @@
       SummaryContracts,
     },
     computed: {
-      dataset () {
-        const data2 = require('./data/dataset-2.json')
+      dataset () {\
         const data = require('./data/dataset.json')
-        const final = concat(data2, data)
-        return final
+        return data
       },
     }
   }
