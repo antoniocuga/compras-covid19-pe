@@ -15,18 +15,16 @@
       </div>
 
       <div class="row">
-        <div class="col-12">
-          <div class="alert alert-success" role="alert">
-            Se encontraron <strong>{{ contracts.length }} contrataciones</strong>
-          </div>
+        <div class="col-12 mb-3">
+          <proveedores-summary :dataset="contracts"></proveedores-summary>
         </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12">
           <contracts :dataset="contracts"></contracts>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -40,7 +38,8 @@
   import orderBy from 'lodash/orderBy'
   import uniq from 'lodash/uniq'
   import { mapMutations, mapState } from 'vuex'
-  import Contracts from './Contracts'
+  import ProveedoresSummary from './ProveedoresSummary'
+
 
   export default {
     name: "Search",
@@ -53,7 +52,7 @@
       dataset: Array
     },
     components: {
-      Contracts
+      ProveedoresSummary
     },
     beforeMount() {
       this.contracts = orderBy(this.dataset, ['FECHACONVOCATORIA'], ['desc'])

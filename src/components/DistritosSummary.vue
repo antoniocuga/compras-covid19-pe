@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <div class="text-center col-12 mb-5">
-      <h3>Cantidad y suma total de compras por entidad gubernamental</h3>
+    <div class="col-12 mb-5">
+      <h4>Cantidad y suma total de compras por entidad gubernamental</h4>
     </div>
     <div class="col-12 col-md-9">
       <highcharts :options="chartOptions"></highcharts>
