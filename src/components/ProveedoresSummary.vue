@@ -32,7 +32,6 @@
 <script>
   import { Chart } from 'highcharts-vue'
   import filter from 'lodash/filter'
-  import find from 'lodash/find'
   import map from 'lodash/map'
   import sum from 'lodash/sum'
   import uniq from 'lodash/uniq'
@@ -98,8 +97,6 @@
         }]
       },
       chartOptions() {
-        const $this = this
-
         return {
           chart: {
             type: 'scatter',
