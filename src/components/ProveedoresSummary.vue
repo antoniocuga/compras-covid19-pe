@@ -1,11 +1,6 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <h4>Cantidad de contrataciones por proveedor en diversos rubros y a diferentes entidades.</h4>
-      <p>A la fecha el gobierno a contratado con <b>{{ proveedores.length }}</b> empresas a nivel nacional. Algunas han brindado servicios a más de una entidad. Explora la cantidad de contratos adjudicados, el monto contrado y en que rubros se realizaron las compras.</p>
-      <p>Contratos publicados entre el {{ desde }} hasta {{ hasta }}</p>
-    </div>
-    <div class="col-12">
       <div class="row proveedores-explore">
         <div class="col-12 mt-5 mb-5">
           <highcharts :options="chartOptions"></highcharts>
@@ -37,8 +32,6 @@
   import uniq from 'lodash/uniq'
   import groupBy from 'lodash/groupBy'
   import sortBy from 'lodash/sortBy'
-  import min from 'lodash/min'
-  import max from 'lodash/max'
 
   import Vue from "vue";
   
@@ -52,8 +45,6 @@
     data() {
       return {
         proveedores: (uniq(map(this.dataset, 'PROVEEDOR'))),
-        desde: (min(map(this.dataset, 'FECHACONVOCATORIA'))),
-        hasta: (max(map(this.dataset, 'FECHACONVOCATORIA'))),
         proveedor: false
       }
     },
@@ -84,7 +75,7 @@
             name: (uniq(map(item, 'PROVEEDOR'))).join(),
             ruc: value,
             y: item.length,
-            x: (sum(map(item, 'MONTOADJUDICADOSOLES'))),
+            x: (sum(map(item, 'MONTOREFERENCIALSOLES'))),
           }
         })
         return compras
@@ -93,7 +84,7 @@
         return [{
           name: "Proveedor",
           data: this.compras,
-          turboThreshold: this.compras.length,
+          turboThreshold: 10000,
         }]
       },
       chartOptions() {
@@ -155,6 +146,7 @@
               }
             },
             series: {
+              turboThreshold: 10000,
               point: {
                 events: {
                   click(e) {

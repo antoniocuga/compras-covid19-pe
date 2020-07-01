@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12 mb-5">
-      <h4>Cantidad y suma total de compras por entidad gubernamental</h4>
+      <h4>Y: Cantidad de compras, X: total en soles, agrupados por rubro y entidad</h4>
     </div>
     <div class="col-12 col-md-9">
       <highcharts :options="chartOptions"></highcharts>
@@ -93,13 +93,14 @@
 
           let data = map(groupBy(item, 'RUC_ENTIDAD'), (item) => {
             return {
-              x: (sum(map(item, 'MONTOADJUDICADOSOLES'))),
+              x: (sum(map(item, 'MONTOREFERENCIAL'))),
               y: item.length,
               name: (uniq(map(item, 'ENTIDAD'))).join()
             }
           })
 
           return {
+            turboThreshold: 10000,
             name: value,
             data: data,
             color: this.colors[value]
