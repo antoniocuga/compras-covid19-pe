@@ -6,18 +6,24 @@
       <p>Contratos publicados entre el {{ desde }} hasta {{ hasta }}</p>
     </div>
     <div class="col-12">
-      <div class="row my-3">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-3">
           <v-select class="vue-select2" :options="departments" placeholder="Todos los departamentos" @input="filterDepartment"></v-select>
-          <v-select class="vue-select2" :options="entidades" placeholder="Todas las entidades" @input="filterEntidad"></v-select>
-          <v-select class="vue-select2" :options="rubros" placeholder="Todas los rubros" @input="filterRubros"></v-select>
-          
-          <!-- <div class="mt-5">
-            <label class="mb-5">Filtrar por monto en soles:</label>
-            <vue-slider :lazy="true" v-model="sliderValue" :min="0" :max="100000000" :enable-cross="false" :tooltip="'always'" :tooltip-placement="['top', 'bottom']"></vue-slider>
-          </div> -->
         </div>
-        <div class="col-8 mb-3">
+        <div class="col-3">
+          <v-select class="vue-select2" :options="entidades" placeholder="Todas las entidades" @input="filterEntidad"></v-select>
+        </div>
+        <div class="col-3">
+          <v-select class="vue-select2" :options="rubros" placeholder="Todas los rubros" @input="filterRubros"></v-select>
+        </div>
+        <div class="col-3">
+          <v-select class="vue-select2" :options="montoList" placeholder="Mostrar contratos con montos menor de" @input="filterContratosMonto"></v-select>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="row my-3">
+        <div class="col-12 mb-3">
           <proveedores-summary :dataset="contracts"></proveedores-summary>
         </div>
       </div>
@@ -56,7 +62,8 @@
         contracts: Array,
         desde: (min(map(this.dataset, 'FECHACONVOCATORIA'))),
         hasta: (max(map(this.dataset, 'FECHACONVOCATORIA'))),
-        sliderValue: [0, 100000000]
+        sliderValue: [0, 100000000],
+        montoList: [10000, 100000, 1000000, 10000000, 100000000]
       }
     },
     props: {
